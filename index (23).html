@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Main Deck Restaurant & Bar | Gaborone, Botswana</title>
+<meta name="description" content="Gaborone's favourite dining destination at Main Mall. Steaks, burgers, pasta, local dishes & craft cocktails. Open daily from 8AM.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --navy:#0d1b3e;
+  --navy2:#152450;
+  --cyan:#1ab8d6;
+  --cyanl:#5dd6ee;
+  --cream:#e8dcc8;
+  --gold:#d4a843;
+  --wh:#faf8f4;
+  --muted:#8a9ab5;
+}
+body{background:var(--navy);color:var(--wh);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+
+nav{position:fixed;top:0;width:100%;z-index:100;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(10,17,40,0.96);border-bottom:1px solid rgba(26,184,214,0.15);transition:background 0.4s;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-badge{width:42px;height:42px;background:var(--cyan);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:900;color:var(--navy);}
+.logo-text{font-family:'Italiana',serif;font-size:21px;color:var(--cream);letter-spacing:2px;}
+.nav-links{display:flex;gap:30px;list-style:none;}
+.nav-links a{color:rgba(232,220,200,0.7);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--cyan);}
+.nav-cta{background:var(--cyan)!important;color:var(--navy)!important;padding:9px 20px;font-weight:500!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.hamburger span{width:24px;height:2px;background:var(--cream);display:block;}
+
+#hero{height:100vh;min-height:620px;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,17,40,0.93) 0%,rgba(10,17,40,0.52) 55%,rgba(10,17,40,0.88) 100%);z-index:1;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:hzoom 14s ease-in-out infinite alternate;}
+@keyframes hzoom{from{transform:scale(1);}to{transform:scale(1.06);}}
+.hero-content{position:relative;z-index:2;padding:0 7%;max-width:700px;animation:fadeup 1.2s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0;}
+@keyframes fadeup{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--cyan);font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;margin-bottom:22px;}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--cyan);}
+h1{font-family:'Playfair Display',serif;font-size:clamp(50px,7.5vw,90px);font-weight:900;line-height:0.95;margin-bottom:24px;}
+h1 em{font-style:italic;color:var(--cyan);display:block;}
+.hero-sub{color:rgba(232,220,200,0.68);font-size:15px;line-height:1.75;max-width:460px;margin-bottom:40px;font-weight:300;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-p{background:var(--cyan);color:var(--navy);padding:15px 34px;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;clip-path:polygon(0 0,calc(100% - 11px) 0,100% 11px,100% 100%,11px 100%,0 calc(100% - 11px));transition:all 0.3s;display:inline-block;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-p:hover{background:var(--cyanl);transform:translateY(-2px);box-shadow:0 10px 30px rgba(26,184,214,0.3);}
+.btn-o{border:1px solid rgba(232,220,200,0.35);color:var(--cream);padding:15px 34px;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;clip-path:polygon(0 0,calc(100% - 11px) 0,100% 11px,100% 100%,11px 100%,0 calc(100% - 11px));transition:all 0.3s;display:inline-block;}
+.btn-o:hover{border-color:var(--cyan);color:var(--cyan);}
+.hero-stats{position:absolute;right:6%;bottom:10%;z-index:2;display:flex;gap:38px;animation:fadeup 1.6s 0.4s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0;}
+.snum{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;color:var(--cyan);line-height:1;}
+.slbl{font-size:10px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--muted);font-size:10px;letter-spacing:2px;text-transform:uppercase;animation:bob 2s infinite;z-index:2;}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--cyan));}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(7px);}}
+
+section{padding:100px 6%;}
+.stag{display:inline-flex;align-items:center;gap:10px;color:var(--cyan);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:14px;}
+.stag::after{content:'';width:36px;height:1px;background:var(--cyan);}
+.stitle{font-family:'Playfair Display',serif;font-size:clamp(34px,4.5vw,56px);font-weight:900;line-height:1.05;color:var(--cream);}
+.stitle span{color:var(--cyan);}
+
+#about{background:var(--navy2);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-vis{position:relative;}
+.about-img-main{width:100%;aspect-ratio:4/5;object-fit:cover;border:1px solid rgba(26,184,214,0.2);}
+.about-img-float{position:absolute;bottom:-28px;right:-28px;width:52%;aspect-ratio:1;object-fit:cover;border:3px solid var(--navy2);box-shadow:0 20px 50px rgba(0,0,0,0.5);}
+.about-badge{position:absolute;top:28px;left:-18px;background:var(--cyan);color:var(--navy);padding:11px 18px;font-family:'Playfair Display',serif;font-size:12px;font-weight:700;letter-spacing:1px;}
+.about-text p{color:rgba(232,220,200,0.63);font-size:15px;line-height:1.9;font-weight:300;margin-top:18px;}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:38px;}
+.feat{display:flex;gap:11px;align-items:flex-start;}
+.ficon{width:34px;height:34px;flex-shrink:0;background:rgba(26,184,214,0.1);border:1px solid rgba(26,184,214,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.ftxt strong{display:block;font-size:13px;font-weight:500;color:var(--cream);margin-bottom:2px;}
+.ftxt span{font-size:12px;color:var(--muted);}
+
+#menu{background:var(--navy);text-align:center;}
+.mhdr{margin-bottom:52px;}
+.mcats{display:flex;gap:8px;justify-content:center;margin-bottom:44px;flex-wrap:wrap;}
+.cbt{padding:8px 20px;border:1px solid rgba(232,220,200,0.2);background:transparent;color:rgba(232,220,200,0.55);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.25s;}
+.cbt.on,.cbt:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(26,184,214,0.07);}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.mc{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer;}
+.mc img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+.mc:hover img{transform:scale(1.08);}
+.mco{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,17,40,0.94) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;text-align:left;}
+.mctag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:5px;font-weight:500;}
+.mcname{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--cream);line-height:1.2;}
+.mcprice{margin-top:5px;font-size:12px;color:var(--gold);font-weight:500;}
+.mc.feat{grid-column:span 2;}
+
+#specials{background:linear-gradient(135deg,var(--cyan) 0%,#0e8aa3 100%);padding:64px 6%;position:relative;overflow:hidden;}
+#specials::before{content:'';position:absolute;top:-40%;right:-8%;width:440px;height:440px;background:rgba(255,255,255,0.06);border-radius:50%;}
+.spinn{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;position:relative;z-index:1;}
+.spey{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,17,40,0.65);font-weight:500;margin-bottom:10px;}
+.sptit{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,48px);font-weight:900;color:var(--navy);line-height:1.05;}
+.splist{display:flex;gap:18px;margin-top:22px;flex-wrap:wrap;}
+.spi{display:flex;align-items:center;gap:10px;background:rgba(10,17,40,0.12);padding:10px 16px;}
+.spi span{font-size:18px;}
+.spit strong{display:block;font-size:13px;font-weight:600;color:var(--navy);}
+.spit small{font-size:11px;color:rgba(10,17,40,0.62);}
+.btnav{background:var(--navy);color:var(--cyan);padding:16px 36px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;clip-path:polygon(0 0,calc(100% - 11px) 0,100% 11px,100% 100%,11px 100%,0 calc(100% - 11px));display:inline-block;transition:all 0.3s;white-space:nowrap;}
+.btnav:hover{background:#0a1128;}
+
+#gallery{background:var(--navy2);}
+.ghdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:38px;}
+.ggrid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:230px 230px;gap:3px;}
+.gi{overflow:hidden;}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;filter:brightness(0.88);}
+.gi:hover img{transform:scale(1.07);filter:brightness(1);}
+.gi:nth-child(1){grid-column:span 2;grid-row:span 2;}
+.gi:nth-child(4){grid-column:span 2;}
+
+#atm{background:var(--navy);display:grid;grid-template-columns:1fr 1fr;align-items:stretch;padding:0;}
+.atv{position:relative;overflow:hidden;min-height:540px;}
+.atv img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.atvo{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(13,27,62,0.55));}
+.attx{padding:72px 6%;display:flex;flex-direction:column;justify-content:center;background:var(--navy2);}
+.attx p{color:rgba(232,220,200,0.63);font-size:15px;line-height:1.9;font-weight:300;margin-top:18px;}
+.perks{margin-top:36px;display:flex;flex-direction:column;gap:13px;}
+.perk{display:flex;align-items:center;gap:12px;padding:13px 16px;border-left:2px solid var(--cyan);background:rgba(26,184,214,0.04);}
+.pikn{font-size:18px;flex-shrink:0;}
+.pnm{font-size:14px;color:var(--cream);font-weight:500;}
+.pds{font-size:12px;color:var(--muted);margin-top:1px;}
+
+#reviews{background:var(--navy);text-align:center;}
+.rhdr{margin-bottom:52px;}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.rcard{background:var(--navy2);border:1px solid rgba(26,184,214,0.1);padding:30px;text-align:left;transition:border-color 0.3s,transform 0.3s;}
+.rcard:hover{border-color:rgba(26,184,214,0.3);transform:translateY(-4px);}
+.rq{font-family:'Playfair Display',serif;font-size:56px;line-height:1;color:var(--cyan);opacity:0.3;margin-bottom:-18px;}
+.rtxt{font-size:14px;line-height:1.8;color:rgba(232,220,200,0.68);font-weight:300;font-style:italic;margin-bottom:22px;}
+.rauth{display:flex;align-items:center;gap:10px;}
+.rav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:var(--navy);font-size:15px;flex-shrink:0;}
+.rnm{font-size:13px;font-weight:500;color:var(--cream);}
+.rst{color:var(--gold);font-size:11px;letter-spacing:2px;}
+
+#booking{background:linear-gradient(135deg,var(--navy2),var(--navy));text-align:center;position:relative;overflow:hidden;}
+#booking::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:520px;height:520px;background:radial-gradient(circle,rgba(26,184,214,0.05) 0%,transparent 70%);pointer-events:none;}
+.bkc{position:relative;z-index:1;}
+.bksub{color:rgba(232,220,200,0.58);font-size:15px;font-weight:300;max-width:480px;margin:14px auto 44px;line-height:1.75;}
+.bopts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.bopt{display:flex;flex-direction:column;align-items:center;gap:7px;padding:24px 30px;border:1px solid rgba(26,184,214,0.18);background:rgba(26,184,214,0.03);text-decoration:none;transition:all 0.3s;min-width:155px;}
+.bopt:hover{border-color:var(--cyan);background:rgba(26,184,214,0.09);transform:translateY(-4px);}
+.boi{font-size:26px;}
+.bol{font-size:12px;font-weight:500;color:var(--cream);letter-spacing:1px;}
+.bod{font-size:11px;color:var(--cyan);}
+
+#info{background:var(--navy2);display:grid;grid-template-columns:1fr 1fr;padding:0;}
+.isec{padding:72px 6%;}
+.isec:first-child{border-right:1px solid rgba(26,184,214,0.1);}
+.hrtbl{margin-top:28px;}
+.hr{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(26,184,214,0.07);font-size:14px;}
+.hday{color:rgba(232,220,200,0.58);font-weight:300;}
+.htime{color:var(--cream);font-weight:500;}
+.obadge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,184,214,0.1);border:1px solid rgba(26,184,214,0.28);color:var(--cyan);padding:5px 14px;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;border-radius:20px;margin-top:14px;}
+.odot{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(1.3);}}
+.locs{margin-top:28px;}
+.li{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px;}
+.lic{width:36px;height:36px;flex-shrink:0;background:rgba(26,184,214,0.09);border:1px solid rgba(26,184,214,0.22);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.llbl{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+.lval{font-size:14px;color:var(--cream);}
+.map-embed{width:100%;height:220px;border:1px solid rgba(26,184,214,0.15);margin-top:26px;filter:saturate(0.4) hue-rotate(180deg);transition:filter 0.3s;}
+.map-embed:hover{filter:saturate(0.7) hue-rotate(170deg);}
+
+footer{background:#080f22;padding:56px 6% 28px;}
+.fi{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;padding-bottom:44px;border-bottom:1px solid rgba(26,184,214,0.09);}
+.fab{font-size:13px;color:var(--muted);line-height:1.8;font-weight:300;max-width:300px;margin-top:14px;}
+.fsoc{display:flex;gap:10px;margin-top:20px;}
+.fsb{width:36px;height:36px;background:rgba(26,184,214,0.07);border:1px solid rgba(26,184,214,0.18);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:14px;transition:all 0.3s;}
+.fsb:hover{background:var(--cyan);border-color:var(--cyan);transform:translateY(-2px);}
+.fc h4{font-family:'Playfair Display',serif;font-size:15px;color:var(--cream);margin-bottom:16px;}
+.fc ul{list-style:none;}
+.fc ul li{margin-bottom:9px;}
+.fc ul a{font-size:13px;color:var(--muted);text-decoration:none;font-weight:300;transition:color 0.2s;}
+.fc ul a:hover{color:var(--cyan);}
+.fb{padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.fb p{font-size:12px;color:var(--muted);}
+.fb span{color:var(--cyan);}
+
+/* FLOATING WHATSAPP */
+.wa-float{position:fixed;bottom:32px;right:32px;z-index:999;display:flex;align-items:center;text-decoration:none;animation:wapop 0.6s 1.5s cubic-bezier(0.34,1.56,0.64,1) both;}
+@keyframes wapop{from{opacity:0;transform:scale(0.5) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.wa-bubble{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(37,211,102,0.45);transition:transform 0.3s,box-shadow 0.3s;flex-shrink:0;}
+.wa-float:hover .wa-bubble{transform:scale(1.1);box-shadow:0 10px 36px rgba(37,211,102,0.6);}
+.wa-bubble svg{width:30px;height:30px;fill:#fff;}
+.wa-tooltip{background:rgba(10,17,40,0.92);color:var(--cream);font-size:13px;font-weight:500;padding:8px 14px;border-radius:4px;margin-right:10px;white-space:nowrap;opacity:0;transform:translateX(10px);transition:opacity 0.3s,transform 0.3s;pointer-events:none;border:1px solid rgba(26,184,214,0.2);}
+.wa-float:hover .wa-tooltip{opacity:1;transform:translateX(0);}
+.wa-ping{position:absolute;top:0;right:0;width:58px;height:58px;border-radius:50%;border:2px solid #25D366;animation:waping 2s 2.2s infinite;}
+@keyframes waping{0%{transform:scale(1);opacity:0.7;}100%{transform:scale(1.75);opacity:0;}}
+
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-stats{display:none;}
+  #about{grid-template-columns:1fr;gap:50px;padding:60px 5%;}
+  .about-img-float{display:none;}
+  .about-badge{left:10px;}
+  .mgrid{grid-template-columns:1fr 1fr;}
+  .mc.feat{grid-column:span 2;}
+  .spinn{grid-template-columns:1fr;}
+  .ggrid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto;}
+  .gi:nth-child(1){grid-column:span 2;grid-row:span 1;}
+  .gi:nth-child(4){grid-column:span 1;}
+  #atm{grid-template-columns:1fr;}
+  .atv{min-height:280px;}
+  .rgrid{grid-template-columns:1fr;}
+  #info{grid-template-columns:1fr;}
+  .isec:first-child{border-right:none;border-bottom:1px solid rgba(26,184,214,0.1);}
+  .fi{grid-template-columns:1fr;gap:38px;}
+  section{padding:68px 5%;}
+  .ghdr{flex-direction:column;gap:16px;align-items:flex-start;}
+  .wa-float{bottom:20px;right:20px;}
+  .wa-tooltip{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a class="wa-float" href="https://wa.me/26773917800" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-tooltip">Chat with us on WhatsApp</span>
+  <div class="wa-bubble">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.72.7 5.27 1.93 7.5L.5 31.5l8.24-1.9A15.46 15.46 0 0016 31.5C24.56 31.5 31.5 24.56 31.5 16S24.56.5 16 .5zm0 28.3a13.15 13.15 0 01-6.7-1.83l-.48-.29-4.89 1.13 1.17-4.76-.32-.5A13.2 13.2 0 1116 28.8zm7.22-9.88c-.4-.2-2.33-1.15-2.69-1.28-.36-.13-.62-.2-.88.2-.26.39-1 1.28-1.23 1.54-.23.26-.45.3-.84.1-.4-.2-1.67-.61-3.18-1.96-1.18-1.05-1.97-2.34-2.2-2.73-.23-.4-.02-.61.17-.81.18-.18.4-.46.59-.69.2-.23.26-.4.4-.66.13-.26.07-.49-.03-.69-.1-.2-.88-2.12-1.2-2.9-.32-.76-.64-.66-.88-.67h-.75c-.26 0-.68.1-1.03.49-.36.4-1.36 1.33-1.36 3.24s1.39 3.76 1.59 4.02c.2.26 2.74 4.18 6.63 5.86.93.4 1.65.64 2.21.82.93.3 1.78.25 2.45.15.75-.11 2.33-.95 2.66-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z"/>
+    </svg>
+  </div>
+  <span class="wa-ping"></span>
+</a>
+
+<!-- NAV -->
+<nav id="mainnav">
+  <a href="#" class="logo">
+    <div class="logo-badge">MD</div>
+    <span class="logo-text">Main Deck</span>
+  </a>
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#about">Story</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#info">Find Us</a></li>
+    <li><a href="tel:+26739177800" class="nav-cta">Reserve</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO — staff/vibe photo -->
+<section id="hero">
+  <img class="hero-img" src="483520840_18385185256115337_5244170591666742952_n.jpg" alt="Main Deck Restaurant Gaborone">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Gaborone's Finest · Main Mall</div>
+    <h1>All Hands<em>On Deck.</em></h1>
+    <p class="hero-sub">Where bold flavours meet Gaborone's most electric atmosphere. Steaks, burgers, pasta, local pot dishes — crafted with heart, served with pride.</p>
+    <div class="hero-btns">
+      <a href="tel:+26739177800" class="btn-p">Reserve a Table</a>
+      <a href="#menu" class="btn-o">View Menu</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div><div class="snum">8AM</div><div class="slbl">Opens Daily</div></div>
+    <div><div class="snum">5★</div><div class="slbl">Rated</div></div>
+    <div><div class="snum">P90</div><div class="slbl">Steaks From</div></div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-vis">
+    <!-- Neon sign interior -->
+    <img class="about-img-main" src="436422962_18337897135115337_8661677567987829354_n.jpg" alt="Main Deck Interior">
+    <!-- Burger floating card -->
+    <img class="about-img-float" src="465660110_18367454890115337_8706034987588828839_n.jpg" alt="Botswana Burger">
+    <div class="about-badge">Est. Gaborone Main Mall</div>
+  </div>
+  <div class="about-text">
+    <div class="stag">Our Story</div>
+    <h2 class="stitle">This Must Be<span> The Place</span></h2>
+    <p>Nestled in the heart of Gaborone's Main Mall, Main Deck Restaurant & Bar is where great food meets an unforgettable vibe. From the glow of our neon sign to the sizzle of a perfectly cooked T-bone, every detail is crafted to make you feel something.</p>
+    <p>We serve Botswana-proud food — hearty pot dishes, flame-kissed steaks, loaded burgers carrying the Botswana flag, fresh pasta, and drinks that hit right. Whether it's breakfast, a long lunch, or a Friday night out — the Deck has a seat for you.</p>
+    <div class="feats">
+      <div class="feat"><div class="ficon">🥩</div><div class="ftxt"><strong>Premium Steaks</strong><span>T-bone from P90–P115</span></div></div>
+      <div class="feat"><div class="ficon">🍔</div><div class="ftxt"><strong>Monster Burgers</strong><span>2-for-1 every Monday</span></div></div>
+      <div class="feat"><div class="ficon">🍺</div><div class="ftxt"><strong>Draught Beer</strong><span>One of few in Gaborone</span></div></div>
+      <div class="feat"><div class="ficon">🌿</div><div class="ftxt"><strong>Vegan Options</strong><span>Vegetarian & vegan friendly</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="mhdr">
+    <div class="stag">What We Serve</div>
+    <h2 class="stitle">Highlights From<span> The Kitchen</span></h2>
+  </div>
+  <div class="mcats">
+    <button class="cbt on" onclick="setCat(this)">All</button>
+    <button class="cbt" onclick="setCat(this)">Steaks & Grills</button>
+    <button class="cbt" onclick="setCat(this)">Burgers</button>
+    <button class="cbt" onclick="setCat(this)">Pasta</button>
+    <button class="cbt" onclick="setCat(this)">Local Dishes</button>
+    <button class="cbt" onclick="setCat(this)">Drinks</button>
+  </div>
+  <div class="mgrid">
+    <!-- T-bone featured -->
+    <div class="mc feat">
+      <img src="481845910_18383329609115337_5293826086687822746_n.jpg" alt="T-Bone Steak">
+      <div class="mco">
+        <div class="mctag">⭐ Signature</div>
+        <div class="mcname">T-Bone Steak + 2 Sides</div>
+        <div class="mcprice">From P90 — P115</div>
+      </div>
+    </div>
+    <!-- Burger -->
+    <div class="mc">
+      <img src="465660110_18367454890115337_8706034987588828839_n.jpg" alt="Botswana Burger">
+      <div class="mco">
+        <div class="mctag">🔥 Fan Favourite</div>
+        <div class="mcname">Loaded Botswana Burger</div>
+      </div>
+    </div>
+    <!-- Pasta -->
+    <div class="mc">
+      <img src="472620202_18377592439115337_6156819291712315526_n.jpg" alt="Spicy Pasta Bowl">
+      <div class="mco">
+        <div class="mctag">🍝 Fresh Made</div>
+        <div class="mcname">Spicy Pasta Bowl</div>
+      </div>
+    </div>
+    <!-- Grill platter -->
+    <div class="mc">
+      <img src="470128328_3671253136499141_810082252447993373_n.jpg" alt="Grill Platter">
+      <div class="mco">
+        <div class="mctag">🍗 Platter</div>
+        <div class="mcname">Wing & Grill Platter</div>
+      </div>
+    </div>
+    <!-- Pot dish -->
+    <div class="mc">
+      <img src="465067068_18366684598115337_5724011818509131458_n.jpg" alt="Potjie Pot Dish">
+      <div class="mco">
+        <div class="mctag">🇧🇼 Local Pride</div>
+        <div class="mcname">Potjie Pot Dish</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<div id="specials">
+  <div class="spinn">
+    <div>
+      <div class="spey">Weekly Specials</div>
+      <h2 class="sptit">Big Eats.<br>Bigger Value.</h2>
+      <div class="splist">
+        <div class="spi"><span>🍔</span><div class="spit"><strong>Monday Burger Special</strong><small>Buy 1 Get 1 Free</small></div></div>
+        <div class="spi"><span>🍗</span><div class="spit"><strong>Big Eats Thursday</strong><small>50% Off Selected Items</small></div></div>
+        <div class="spi"><span>🎵</span><div class="spit"><strong>DJ Nights</strong><small>Live music & entertainment</small></div></div>
+      </div>
+    </div>
+    <a href="tel:+26739177800" class="btnav">Book Your Table →</a>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="ghdr">
+    <div><div class="stag">Visual Feast</div><h2 class="stitle">Life On<span> The Deck</span></h2></div>
+    <a href="https://www.instagram.com/main.deck/" target="_blank" class="btn-o" style="font-size:11px;padding:10px 20px;">Follow @main.deck</a>
+  </div>
+  <div class="ggrid">
+    <div class="gi"><img src="553760185_18413323240115337_1988138326826343034_n.jfif" alt="Main Deck Vibe"></div>
+    <div class="gi"><img src="482390104_18384187810115337_562541301750718331_n.jpg" alt="Steak with Sides"></div>
+    <div class="gi"><img src="474038549_18377994757115337_5642693286422615955_n.jpg" alt="Pasta Dish"></div>
+    <div class="gi"><img src="627677980_1299524648862691_3582021008829181788_n.jpg" alt="Restaurant Staff"></div>
+    <div class="gi"><img src="474501251_18378652006115337_4685430858591040119_n.jpg" alt="Food Close-up"></div>
+    <div class="gi"><img src="633016006_1304714255010397_4377659103925048974_n.jpg" alt="Dining Scene"></div>
+  </div>
+</section>
+
+<!-- ATMOSPHERE -->
+<div id="atm">
+  <div class="atv">
+    <img src="470894957_18373812958115337_36178659502276740_n.jpg" alt="Main Deck Team">
+    <div class="atvo"></div>
+  </div>
+  <div class="attx">
+    <div class="stag">The Experience</div>
+    <h2 class="stitle">More Than A<span> Meal</span></h2>
+    <p>Come for the food. Stay for the vibe. Main Deck is Gaborone's social hub — where business lunches flow into celebratory dinners, and Friday nights feel like a festival.</p>
+    <div class="perks">
+      <div class="perk"><div class="pikn">🏆</div><div><div class="pnm">VIP Private Dining</div><div class="pds">Ideal for birthdays & corporate events</div></div></div>
+      <div class="perk"><div class="pikn">🎵</div><div><div class="pnm">Live DJ Nights</div><div class="pds">DJ Storm & guest DJs on rotation</div></div></div>
+      <div class="perk"><div class="pikn">🌟</div><div><div class="pnm">Happy Hour Specials</div><div class="pds">Great drink deals daily</div></div></div>
+      <div class="perk"><div class="pikn">🚗</div><div><div class="pnm">Takeout Available</div><div class="pds">Call ahead for your order</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="rhdr"><div class="stag">What People Say</div><h2 class="stitle">Loved By<span> Gaborone</span></h2></div>
+  <div class="rgrid">
+    <div class="rcard">
+      <div class="rq">"</div>
+      <p class="rtxt">The meat plate was absolutely perfect, and the mayo dip was delicious. Had the best birthday ever in the VIP area. This place is something special.</p>
+      <div class="rauth"><div class="rav">T</div><div><div class="rnm">Thabo M.</div><div class="rst">★★★★★</div></div></div>
+    </div>
+    <div class="rcard">
+      <div class="rq">"</div>
+      <p class="rtxt">My new favourite lunch spot in Gaborone. Chic yet rustic. Very unique and very cool. Good food at reasonable prices. And great drinks too!</p>
+      <div class="rauth"><div class="rav">R</div><div><div class="rnm">Rethabile K.</div><div class="rst">★★★★★</div></div></div>
+    </div>
+    <div class="rcard">
+      <div class="rq">"</div>
+      <p class="rtxt">Best restaurant at Main Mall. P90–115 for a well-cooked steak with 2 sides. One of the very few places you can find draught beer in Gaborone. Great ribs too!</p>
+      <div class="rauth"><div class="rav">B</div><div><div class="rnm">Boitumelo S.</div><div class="rst">★★★★★</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section id="booking">
+  <div class="bkc">
+    <div class="stag" style="justify-content:center">Reserve Now</div>
+    <h2 class="stitle">Your Table Is<span> Waiting</span></h2>
+    <p class="bksub">Walk-ins welcome. Reservations recommended for groups and weekend evenings. We look forward to having you on deck.</p>
+    <div class="bopts">
+      <a href="tel:+26739177800" class="bopt"><div class="boi">📞</div><div class="bol">Call Us</div><div class="bod">+267 391 7800</div></a>
+      <a href="https://wa.me/26773917800" target="_blank" class="bopt"><div class="boi">💬</div><div class="bol">WhatsApp</div><div class="bod">Send a message</div></a>
+      <a href="https://www.instagram.com/main.deck/" target="_blank" class="bopt"><div class="boi">📸</div><div class="bol">Instagram</div><div class="bod">@main.deck</div></a>
+      <a href="https://maps.google.com/?q=Main+Deck+Restaurant+Gaborone+Main+Mall" target="_blank" class="bopt"><div class="boi">📍</div><div class="bol">Directions</div><div class="bod">Main Mall, Gaborone</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<div id="info">
+  <div class="isec">
+    <div class="stag">Hours</div>
+    <h3 class="stitle" style="font-size:30px">When We're<span> Open</span></h3>
+    <div class="obadge"><span class="odot"></span>Open Today</div>
+    <div class="hrtbl">
+      <div class="hr"><span class="hday">Monday – Friday</span><span class="htime">8:00 AM – 10:30 PM</span></div>
+      <div class="hr"><span class="hday">Saturday</span><span class="htime">10:30 AM – 10:30 PM</span></div>
+      <div class="hr"><span class="hday">Sunday</span><span class="htime">12:00 PM – 10:30 PM</span></div>
+    </div>
+  </div>
+  <div class="isec">
+    <div class="stag">Location</div>
+    <h3 class="stitle" style="font-size:30px">Find<span> Us</span></h3>
+    <div class="locs">
+      <div class="li"><div class="lic">📍</div><div><div class="llbl">Address</div><div class="lval">Plot 1109, Main Mall<br>Gaborone, Botswana</div></div></div>
+      <div class="li"><div class="lic">📞</div><div><div class="llbl">Phone</div><div class="lval">+267 391 7800</div></div></div>
+      <div class="li"><div class="lic">🚌</div><div><div class="llbl">Getting Here</div><div class="lval">Near Intercape stop · Parking at Shri Ram (87m)</div></div></div>
+    </div>
+    <iframe class="map-embed"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3590!2d25.9147!3d-24.6545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMain+Mall+Gaborone!5e0!3m2!1sen!2sbw!4v1"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Main Deck Location">
+    </iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div>
+      <a href="#" class="logo" style="margin-bottom:14px;display:inline-flex;">
+        <div class="logo-badge">MD</div>
+        <span class="logo-text">Main Deck</span>
+      </a>
+      <p class="fab">Gaborone's favourite restaurant & bar at Main Mall. Bold flavours, great vibes, real Botswana hospitality — every single day.</p>
+      <div class="fsoc">
+        <a href="https://www.instagram.com/main.deck/" target="_blank" class="fsb">📸</a>
+        <a href="https://www.facebook.com/maindeckgaborone/" target="_blank" class="fsb">👍</a>
+        <a href="tel:+26739177800" class="fsb">📞</a>
+        <a href="https://wa.me/26773917800" target="_blank" class="fsb">💬</a>
+      </div>
+    </div>
+    <div class="fc">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#specials">Weekly Specials</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h4>Visit Us</h4>
+      <ul>
+        <li><a href="#info">Opening Hours</a></li>
+        <li><a href="#info">Directions</a></li>
+        <li><a href="tel:+26739177800">+267 391 7800</a></li>
+        <li><a href="#booking">Make a Reservation</a></li>
+        <li><a href="https://www.tripadvisor.com/Restaurant_Review-g293767-d10058529" target="_blank">TripAdvisor</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fb">
+    <p>© 2025 Main Deck Restaurant & Bar · Main Mall, Gaborone, Botswana · Built by <span>CodeEl</span></p>
+    <p style="font-size:11px;color:rgba(138,154,181,0.4);">All Hands On Deck 🇧🇼</p>
+  </div>
+</footer>
+
+<script>
+function toggleNav(){
+  const nl=document.getElementById('navlinks');
+  const open=nl.style.display==='flex';
+  nl.style.display=open?'none':'flex';
+  if(!open){nl.style.cssText='display:flex;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:rgba(10,17,40,0.98);padding:20px 5%;gap:20px;border-bottom:1px solid rgba(26,184,214,0.15);z-index:99;';}
+}
+function setCat(btn){document.querySelectorAll('.cbt').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+window.addEventListener('scroll',()=>{document.getElementById('mainnav').style.background=window.scrollY>50?'rgba(8,14,34,0.99)':'rgba(10,17,40,0.96)';});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.07});
+document.querySelectorAll('.rcard,.mc,.gi,.feat,.perk,.bopt').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.55s ease,transform 0.55s ease';obs.observe(el);});
+</script>
+</body>
+</html>
